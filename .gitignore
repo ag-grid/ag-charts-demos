@@ -1,0 +1,9 @@
+node_modules
+package-lock.json
+.vite
+.idea
+dist
+dist-*
+.agents
+.claude
+skills-lock.json
