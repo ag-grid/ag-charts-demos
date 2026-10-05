@@ -11,10 +11,10 @@ raise changes there rather than here.
 
 | Demo | Framework | Path |
 | ---- | --------- | ---- |
-| Financial | React | [`financial/react`](./financial/react) |
-| Financial | Angular | [`financial/angular`](./financial/angular) |
-| Financial | Vue | [`financial/vue`](./financial/vue) |
-| Financial | TypeScript | [`financial/typescript`](./financial/typescript) |
+| Trading Terminal | React | [`trading-terminal/react`](./trading-terminal/react) |
+| Trading Terminal | Angular | [`trading-terminal/angular`](./trading-terminal/angular) |
+| Trading Terminal | Vue | [`trading-terminal/vue`](./trading-terminal/vue) |
+| Trading Terminal | TypeScript | [`trading-terminal/typescript`](./trading-terminal/typescript) |
 | Web Analytics | React | [`web-analytics/react`](./web-analytics/react) |
 | Web Analytics | Angular | [`web-analytics/angular`](./web-analytics/angular) |
 | Web Analytics | Vue | [`web-analytics/vue`](./web-analytics/vue) |
