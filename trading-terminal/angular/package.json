@@ -14,9 +14,9 @@
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
     "@angular/platform-browser": "^20.0.0",
-    "ag-charts-angular": "latest",
-    "ag-charts-community": "latest",
-    "ag-charts-enterprise": "latest",
+    "ag-charts-angular": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-angular.tgz",
+    "ag-charts-community": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-community.tgz",
+    "ag-charts-enterprise": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-enterprise.tgz",
     "ag-grid-angular": "~36.2.0",
     "ag-grid-community": "~36.2.0",
     "rxjs": "~7.8.2",
@@ -28,5 +28,13 @@
     "@angular/cli": "^20.0.0",
     "@angular/compiler-cli": "^20.0.0",
     "typescript": "~5.8.3"
+  },
+  "overrides": {
+    "ag-charts-types": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-types.tgz",
+    "ag-charts-core": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-core.tgz",
+    "ag-charts-locale": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-locale.tgz",
+    "ag-charts-community": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-community.tgz",
+    "ag-charts-enterprise": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-enterprise.tgz",
+    "ag-charts-angular": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-angular.tgz"
   }
 }

@@ -13,9 +13,9 @@
     "@radix-ui/react-popover": "^1.1.0",
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-tabs": "^1.1.0",
-    "ag-charts-community": "latest",
-    "ag-charts-enterprise": "latest",
-    "ag-charts-react": "latest",
+    "ag-charts-community": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-community.tgz",
+    "ag-charts-enterprise": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-enterprise.tgz",
+    "ag-charts-react": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-react.tgz",
     "ag-grid-community": "~36.2.0",
     "ag-grid-enterprise": "~36.2.0",
     "ag-grid-react": "~36.2.0",
@@ -27,5 +27,13 @@
     "@types/react-dom": "^18.2.0",
     "typescript": "~5.8.3",
     "vite": "^8.3.0"
+  },
+  "overrides": {
+    "ag-charts-types": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-types.tgz",
+    "ag-charts-core": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-core.tgz",
+    "ag-charts-locale": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-locale.tgz",
+    "ag-charts-community": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-community.tgz",
+    "ag-charts-enterprise": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-enterprise.tgz",
+    "ag-charts-react": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-react.tgz"
   }
 }

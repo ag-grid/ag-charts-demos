@@ -9,12 +9,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "ag-charts-community": "latest",
-    "ag-charts-enterprise": "latest",
+    "ag-charts-community": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-community.tgz",
+    "ag-charts-enterprise": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-enterprise.tgz",
     "ag-grid-community": "~36.2.0"
   },
   "devDependencies": {
     "typescript": "~5.8.3",
     "vite": "^8.3.0"
+  },
+  "overrides": {
+    "ag-charts-types": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-types.tgz",
+    "ag-charts-core": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-core.tgz",
+    "ag-charts-locale": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-locale.tgz",
+    "ag-charts-community": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-community.tgz",
+    "ag-charts-enterprise": "https://charts-staging.ag-grid.com/npm-packages/ag-charts-enterprise.tgz"
   }
 }
