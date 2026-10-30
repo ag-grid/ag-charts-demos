@@ -15,13 +15,19 @@ npm run dev
 ## About this folder
 
 This project is a port of the React demo source in
-[`packages/ag-charts-demos/src/demos/trading-terminal`](https://github.com/ag-grid/ag-charts/tree/latest/packages/ag-charts-demos/src/demos/trading-terminal), which is the
+[`packages/ag-charts-demos/src/demos/trading-terminal`](https://github.com/ag-grid/ag-charts/tree/b14.3.0/packages/ag-charts-demos/src/demos/trading-terminal), which is the
 golden master. The demo lives in `src/`, with `src/main.ts` mounting it. [`PORTING.md`](../vue.PORTING.md) records how
 the React source maps onto this port and how the two are checked against each other; a change to
 the demo lands in the React source first and is then carried across.
 
-The `ag-charts-*` dependencies use the npm `latest` tag on the development branch, so `npm install`
-fetches the newest published release; on a release branch they pin that release exactly. The demo
-may already use features of a release that is not out yet; if so, it catches up when that release is
-published.
+In the committed seeds the `ag-charts-*` dependencies use the npm `latest` tag whenever the
+workspace is on a pre-release, on any branch (release branches included), so `npm install` fetches
+the newest published release; they pin the release exactly once the workspace is at `X.Y.Z`. The
+demo may already use features of a release that is not out yet; if so, it catches up when that
+release is published. The copy in `ag-grid/ag-charts-demos` is exported per ref, so read its
+`package.json` for what it installs. Dependencies on the `latest` tag install, at `staging` and the
+release branches (`bX.Y.Z`), the AG Charts build their docs site was made from, as package tarballs
+that site serves. Dependencies pinned to a release (the `release-X.Y.Z` tags, a release branch once
+its workspace is at `X.Y.Z`) install that release from npm. The default branch `latest` follows the
+newest release.
 AG Charts Enterprise features show a watermark until a licence key is set.
