@@ -4,7 +4,7 @@
 import * as RLabel from '@radix-ui/react-label';
 import * as RSelect from '@radix-ui/react-select';
 import * as RToggleGroup from '@radix-ui/react-toggle-group';
-import { type ButtonHTMLAttributes, forwardRef } from 'react';
+import { type ButtonHTMLAttributes, type ReactNode, forwardRef } from 'react';
 
 // Forwards its ref so a caller can put focus back on the control it came from — see `AttentionAlert`.
 export const Button = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement>>(
@@ -43,7 +43,18 @@ export function Select({
         <RSelect.Root value={value} onValueChange={onValueChange}>
             <RSelect.Trigger className="pc-btn pc-select-trigger" aria-label={ariaLabel}>
                 <RSelect.Value />
-                <RSelect.Icon>▾</RSelect.Icon>
+                <RSelect.Icon className="pc-select-icon">
+                    <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        focusable="false"
+                    >
+                        <path d="M1 2.5h8L5 7.5z" />
+                    </svg>
+                </RSelect.Icon>
             </RSelect.Trigger>
             <RSelect.Portal>
                 <RSelect.Content className="pc-portal pc-select-content" position="popper" sideOffset={4}>
@@ -67,18 +78,35 @@ export function Select({
     );
 }
 
+export interface ToggleOption extends SelectOption {
+    /** Shown in place of the text; the label is kept as the item's accessible name and tooltip. */
+    icon?: ReactNode;
+}
+
+/** A 16px filled glyph on Carbon's 32-unit grid, inked in the item's text colour. */
+export function ToggleIcon({ children }: { children: ReactNode }) {
+    return (
+        <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false">
+            {children}
+        </svg>
+    );
+}
+
 export function ToggleGroup({
     value,
     onValueChange,
     options,
     ariaLabel,
+    label,
 }: {
     value: string;
     onValueChange: (value: string) => void;
-    options: SelectOption[];
+    options: ToggleOption[];
     ariaLabel: string;
+    label?: string;
 }) {
-    return (
+    const hasLabel = label != null && label !== '';
+    const group = (
         <RToggleGroup.Root
             className="pc-toggle-group"
             type="single"
@@ -88,11 +116,30 @@ export function ToggleGroup({
                 if (next !== '') onValueChange(next);
             }}
         >
-            {options.map((option) => (
-                <RToggleGroup.Item key={option.value} className="pc-toggle-item" value={option.value}>
-                    {option.label}
-                </RToggleGroup.Item>
-            ))}
+            {options.map((option) =>
+                option.icon == null ? (
+                    <RToggleGroup.Item key={option.value} className="pc-toggle-item" value={option.value}>
+                        {option.label}
+                    </RToggleGroup.Item>
+                ) : (
+                    <RToggleGroup.Item
+                        key={option.value}
+                        className="pc-toggle-item pc-toggle-item--icon"
+                        value={option.value}
+                        aria-label={option.label}
+                        title={option.label}
+                    >
+                        {option.icon}
+                    </RToggleGroup.Item>
+                )
+            )}
         </RToggleGroup.Root>
+    );
+    if (!hasLabel) return group;
+    return (
+        <div className="pc-labeled-select">
+            <span aria-hidden="true">{label}</span>
+            {group}
+        </div>
     );
 }

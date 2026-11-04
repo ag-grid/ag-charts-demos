@@ -4,7 +4,15 @@ import type { AgAreaSeriesOptions, AgCartesianChartOptions, AgLineSeriesOptions 
 import { AgCharts } from 'ag-charts-react';
 
 import { NEUTRAL, PALETTE, THEME } from '../chartTheme';
-import { fmtCurrency, fmtCurrencyCompact, fmtDate, fmtPct } from '../format';
+import {
+    fmtCurrency,
+    fmtCurrencyCompact,
+    fmtCurrencyMillions,
+    fmtDate,
+    fmtMonth,
+    fmtPct,
+    wholeMillionStep,
+} from '../format';
 import type { BurnUpPoint } from '../types';
 
 interface BudgetBurnUpProps {
@@ -12,6 +20,12 @@ interface BudgetBurnUpProps {
     /** The allocation the pace line runs to. */
     budget: number;
 }
+
+/** A day of the month, with the month beneath it on the 1st — the same shape as the month axes' year. */
+const dayTick = (value: number | Date) => {
+    const day = new Date(value).getDate();
+    return day === 1 ? `1\n${fmtMonth(value)}` : String(day);
+};
 
 /**
  * Committed spend against a straight-line budget pace, across the whole period.
@@ -38,6 +52,7 @@ export function BudgetBurnUp({ points, budget }: BudgetBurnUpProps) {
             connectMissingData: false,
             tooltip: {
                 renderer: ({ datum }) => ({
+                    heading: '',
                     title: fmtDate(datum.date),
                     data: [
                         { label: 'Committed', value: fmtCurrency(datum.committed ?? 0) },
@@ -60,28 +75,37 @@ export function BudgetBurnUp({ points, budget }: BudgetBurnUpProps) {
             tooltip: { enabled: false },
         };
 
+        const yMax = Math.max(budget, ...points.map((point) => Math.max(point.committed ?? 0, point.pace)));
+
         return {
             theme: THEME,
             data: points,
             series: [pace, committed],
             axes: {
-                x: { type: 'time', position: 'bottom' },
+                x: {
+                    type: 'unit-time',
+                    position: 'bottom',
+                    // Weekly ticks report a `day` unit; a year to date ticks by month.
+                    label: { formatter: ({ value, unit }) => (unit === 'day' ? dayTick(value) : fmtMonth(value)) },
+                    parentLevel: { label: { formatter: ({ value }) => dayTick(value), fontWeight: 'normal' } },
+                },
                 y: {
                     type: 'number',
                     position: 'left',
                     title: { enabled: true, text: 'Committed spend' },
-                    label: { formatter: ({ value }) => fmtCurrencyCompact(value) },
+                    interval: { step: wholeMillionStep(yMax) },
+                    label: { formatter: ({ value }) => fmtCurrencyMillions(value) },
                     crossLines: [
                         {
                             type: 'line',
                             value: budget,
-                            stroke: 'var(--pc-accent)',
+                            stroke: 'var(--pc-muted)',
                             strokeWidth: 1,
                             label: {
                                 enabled: true,
                                 text: `${fmtCurrencyCompact(budget)} allocation`,
                                 placement: 'top-left',
-                                color: 'var(--pc-accent)',
+                                color: 'var(--pc-muted)',
                                 fontSize: 11,
                             },
                         },
@@ -89,7 +113,8 @@ export function BudgetBurnUp({ points, budget }: BudgetBurnUpProps) {
                 },
             },
             legend: { enabled: true, position: 'bottom' },
-            padding: { top: 8, right: 12, bottom: 4, left: 4 },
+            padding: { top: 8, right: 12, bottom: 0, left: 4 },
+            highlight: { enabled: false },
         };
     }, [points, budget]);
 
