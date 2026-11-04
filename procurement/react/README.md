@@ -15,7 +15,7 @@ npm run dev
 ## About this folder
 
 This project is generated from the React demo source in
-[`packages/ag-charts-demos/src/demos/procurement`](https://github.com/ag-grid/ag-charts/tree/b14.3.0/packages/ag-charts-demos/src/demos/procurement) by
+[`packages/ag-charts-demos/src/demos/procurement`](https://github.com/ag-grid/ag-charts/tree/release-14.3.0/packages/ag-charts-demos/src/demos/procurement) by
 `tools/seeds/generate-react-seed.mjs`. The demo source lives in `src/`, with `src/main.tsx`
 mounting it. Do not edit the seed in place: change the demo source and regenerate.
 
@@ -23,10 +23,5 @@ Files under `src/vendored/` are copied from sibling demos that this one shares s
 
 - `src/demos/web-analytics/topology.ts`
 
-The `ag-charts-*` dependencies here use the npm `latest` tag, so `npm install` fetches the newest
-published release; the demo may already use features of a release that is not out yet, and catches up
-when that release is published. The copy in `ag-grid/ag-charts-demos` installs differently by ref:
-`staging` and the release branches (`bX.Y.Z`) install the AG Charts build their docs site was made
-from, as package tarballs that site serves, and the `release-X.Y.Z` tags and the default branch
-`latest` install a published release from npm.
+The `ag-charts-*` dependencies are pinned to 14.3.0, the release this seed was generated for.
 AG Charts Enterprise features show a watermark until a licence key is set.

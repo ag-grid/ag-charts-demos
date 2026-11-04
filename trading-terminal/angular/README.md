@@ -18,7 +18,7 @@ build with the dev server.
 ## About this folder
 
 This project is a hand-written port of the React demo source in
-[`packages/ag-charts-demos/src/demos/trading-terminal`](https://github.com/ag-grid/ag-charts/tree/b14.3.0/packages/ag-charts-demos/src/demos/trading-terminal). The demo lives in
+[`packages/ag-charts-demos/src/demos/trading-terminal`](https://github.com/ag-grid/ag-charts/tree/release-14.3.0/packages/ag-charts-demos/src/demos/trading-terminal). The demo lives in
 `src/`, with `src/main.ts` bootstrapping it. The pure TypeScript modules (data, formatting, chart
 theme, transactions, grid configuration) are copied from the React demo unchanged; the components
 are rewritten as standalone Angular components with signals, the Radix UI controls as components

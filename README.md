@@ -3,7 +3,7 @@
 Demo apps for the AG Charts examples showcased on https://www.ag-grid.com/charts/examples/.
 
 This repository is generated from
-[`packages/ag-charts-demos/seeds`](https://github.com/ag-grid/ag-charts/tree/b14.3.0/packages/ag-charts-demos/seeds) in
+[`packages/ag-charts-demos/seeds`](https://github.com/ag-grid/ag-charts/tree/release-14.3.0/packages/ag-charts-demos/seeds) in
 [ag-grid/ag-charts](https://github.com/ag-grid/ag-charts), and each sync replaces its content:
 raise changes there rather than here.
 
